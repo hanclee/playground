@@ -1,2 +1,7 @@
+<%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+
 <h1>Hello, Rails!</h1>
+
+<%= bar_chart @articles.group(:title).count %>
+
 <%= link_to 'My Blog', controller: 'articles' %>
