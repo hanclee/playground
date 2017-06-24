@@ -18,9 +18,13 @@ print(sess.run(hello))
 
 # setup ipython notebook
 pip install jupyter
+pip install tensorboard
 
-#
- run env
+# run env
 cd ~/dev/playground/tensorflow/tutorial
 source ~/dev/playground/tensorflow/tutorial/bin/activate
 jupyter notebook
+
+# notes
+https://medium.com/@TalPerry/deep-learning-the-stock-market-df853d139e02
+https://cloud.google.com/solutions/machine-learning-with-financial-time-series-data
