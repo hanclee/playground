@@ -1,5 +1,7 @@
 {
   "name": "action-cable",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "jquery": "^3.2.1"
+  }
 }

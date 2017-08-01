@@ -1,11 +1,11 @@
 class MessagesController < ApplicationController
   def create
     message = Message.new(message_params)
-    message.user = current_user
+    # message.user = current_user
+    message.user = User.find(1)
     if message.save
-      # do some stuff
-    else
-      redirect_to chatrooms_path
+      ActionCable.server.broadcast 'messages', message: message.content, user: message.user.username
+      head :ok
     end
   end
 
