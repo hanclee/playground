@@ -1,0 +1,1 @@
+/home/ubuntu/dev/playground/django/react-example/webpack.config.js
