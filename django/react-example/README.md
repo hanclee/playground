@@ -28,3 +28,4 @@ http://localhost:8000/admin
 
 python manage.py makemigrations example
 python manage.py sqlmigrate example 0001
+python manage.py migrate
