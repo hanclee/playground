@@ -1,0 +1,13 @@
+{
+  "name": "strands-ui-app",
+  "version": "1.0.0",
+  "description": "Strands UI Node.js App",
+  "author": "Han Lee <hanclee@yahoo.com>",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.15.4"
+  }
+}
