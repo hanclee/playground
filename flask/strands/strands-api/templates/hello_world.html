@@ -1,0 +1,17 @@
+<!doctype html>
+<head>
+  <title>Hello Bio</title>
+</head>
+<body>
+  <div class=page>
+    <h1>Hello, Bio!</h1>
+    <h2>Nucleotides</h2>
+    {% if ids %}
+      <ol>
+        {% for id in ids %}
+          <li>{{ id }}</li>
+        {% endfor %}
+      </ol>
+    {% endif %}
+  </div>
+</body>

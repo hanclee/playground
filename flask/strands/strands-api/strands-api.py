@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template, jsonify, request
 from Bio import Entrez
 
 app = Flask(__name__)
@@ -6,7 +6,17 @@ app = Flask(__name__)
 @app.route('/')
 def hello_bio():
     Entrez.email = "hanclee@yahoo.com"
-    handle = Entrez.esearch(db="nucleotide", term="Cypripedioideae", retmax=814, idtype="acc")
+    handle = Entrez.esearch(db="nucleotide", term="Cypripedioideae", retmax=1000, idtype="acc")
     record = Entrez.read(handle)
     handle.close()
-    return "<h1>Hello, Bio!</h1><h2>Nucleotides</h2>" + "<br/>".join(record["IdList"])
+    return render_template('hello_world.html', ids=record["IdList"])
+
+@app.route('/dna_search')
+def dna_search():
+    dna = request.args.get('q')
+
+    Entrez.email = "hanclee@yahoo.com"
+    handle = Entrez.esearch(db="nucleotide", term=dna, retmax=1000, idtype="acc")
+    record = Entrez.read(handle)
+    handle.close()
+    return jsonify(ids=record["IdList"])
