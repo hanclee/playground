@@ -24,7 +24,7 @@ These instructions were made for Ubuntu 17.04.
 - docker-compose build
 
 # TODO
-## PENDING
+### PENDING
 1. set up react
 2. set up mysql and link to node.js
 3. set up user model
@@ -37,7 +37,7 @@ These instructions were made for Ubuntu 17.04.
 10. implement cancel search
 11. implement search history
 
-## DONE
+### DONE
 - set up docker dev env
 - set up flask api server
 - set up biopython in api server
