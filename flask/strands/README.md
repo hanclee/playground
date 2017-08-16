@@ -26,6 +26,7 @@ These instructions were made for Ubuntu 17.04.
 # TODO
 ### PENDING
 1. set up react
+2. set up node.js hot reloading
 2. set up mysql and link to node.js
 3. set up user model
 4. set up login page
