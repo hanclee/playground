@@ -27,6 +27,7 @@ These instructions were made for Ubuntu 17.04.
 - exec su -l $USER   (new shell with docker group)
 - cd flask/strands
 - docker-compose build
+- docker-compose build --no-cache (force a clean build)
 
 # NODE SETUP
 - sudo npm install -g create-react-app
@@ -34,6 +35,8 @@ These instructions were made for Ubuntu 17.04.
 - create-react-app strands-ui-app
 - cd strands-ui-app
 - npm install --save classnames
+- npm install --save react-bootstrap
+- npm install --save bootstrap
 - npm start
 
 # TODO
@@ -67,4 +70,6 @@ These instructions were made for Ubuntu 17.04.
 - https://www.ncbi.nlm.nih.gov/nuccore/340025671
 - https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
 - https://docs.docker.com/compose/django/#create-a-django-project
+- https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md
 - https://medium.com/@patriciolpezjuri/using-create-react-app-with-react-router-express-js-8fa658bf892d
+- https://github.com/facebookincubator/create-react-app/issues/301

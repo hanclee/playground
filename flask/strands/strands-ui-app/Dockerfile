@@ -10,3 +10,5 @@ RUN mkdir -p /strands-ui-app && cp -ar /tmp/node_modules /strands-ui-app
 WORKDIR /strands-ui-app
 
 ADD . /strands-ui-app
+
+RUN cd /strands-ui-app && npm install
