@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  db:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=D3vp@ss
+  api:
+    build: strands-api
+    environment:
+      - FLASK_DEBUG=1
+      - FLASK_APP=strands-api.py
+    command: flask run --host=0.0.0.0
+    volumes:
+      - ./strands-api:/strands-api
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+  web:
+    build: strands-ui-app
+    command: npm start
+    volumes:
+      - ./strands-ui-app:/strands-ui-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+      - api
