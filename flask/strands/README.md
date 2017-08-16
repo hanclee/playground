@@ -29,34 +29,32 @@ These instructions were made for Ubuntu 17.04.
 - docker-compose build
 
 # NODE SETUP
-sudo npm install -g create-react-app
-cd flask/strands
-create-react-app strands-ui-app
-cd strands-ui-app
-npm install --save classnames
-npm start
+- sudo npm install -g create-react-app
+- cd flask/strands
+- create-react-app strands-ui-app
+- cd strands-ui-app
+- npm install --save classnames
+- npm start
 
 # TODO
 ### PENDING
-1. set up react
-2. set up node.js hot reloading
-2. set up mysql and link to node.js
+1. set up search screen and do a call to the api server
+2. set up postgres and link to express
 3. set up user model
 4. set up login page
-5. set up app main page
-6. integrate react
-7. build search screen
-8. build API call for search
-9. integrate search screen
-10. implement cancel search
-11. implement search history
+5. implement cancel search
+6. implement search history
 
 ### DONE
 - set up docker dev env
 - set up flask api server
 - set up biopython in api server
 - get flask to use GIT checkout dir sources instead of needing a build
+- build API call for search
 - set up express app server
+- set up react
+- set up app main page
+- set up node.js hot reloading
 
 # QUESTIONS
 - does app need user/passwords for login or will anonymous sessions be ok? (Lame if the cookies are cleared but meets MVP spec)
