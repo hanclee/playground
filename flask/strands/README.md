@@ -7,6 +7,13 @@ These instructions were made for Ubuntu 17.04.
 - (browser-ui) http://localhost:8080
 - (browser-api) http://localhost:5000
 
+# SHELL
+- docker-compose run --rm api /bin/bash (api host)
+- docker-compose run --rm web /bin/bash (web host)
+
+# TEST
+- TODO: docker-compose -p tests run -p 3000 --rm web npm run watch-tests
+
 # INSTALLATION
 - (assumes app base dir is "flask/", replace with your git checkout dir)
 - sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
@@ -18,10 +25,16 @@ These instructions were made for Ubuntu 17.04.
 - sudo pip install docker-compose
 - sudo usermod -aG docker $USER
 - exec su -l $USER   (new shell with docker group)
-- cd flask/strands/strands-api
-- pip install -r requirements.txt (TODO: may not be needed on a fresh machine. Retest.)
-- cd ..
+- cd flask/strands
 - docker-compose build
+
+# NODE SETUP
+sudo npm install -g create-react-app
+cd flask/strands
+create-react-app strands-ui-app
+cd strands-ui-app
+npm install --save classnames
+npm start
 
 # TODO
 ### PENDING
@@ -56,3 +69,4 @@ These instructions were made for Ubuntu 17.04.
 - https://www.ncbi.nlm.nih.gov/nuccore/340025671
 - https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
 - https://docs.docker.com/compose/django/#create-a-django-project
+- https://medium.com/@patriciolpezjuri/using-create-react-app-with-react-router-express-js-8fa658bf892d

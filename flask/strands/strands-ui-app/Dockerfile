@@ -5,7 +5,7 @@ FROM node:boron
 ADD package.json /tmp/package.json
 ADD package-lock.json /tmp/package-lock.json
 RUN cd /tmp && npm install
-RUN mkdir -p /strands-ui-app && cp -a /tmp/node_modules /strands-ui-app
+RUN mkdir -p /strands-ui-app && cp -ar /tmp/node_modules /strands-ui-app
 
 WORKDIR /strands-ui-app
 

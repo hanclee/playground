@@ -1,13 +1,17 @@
 {
   "name": "strands-ui-app",
-  "version": "1.0.0",
-  "description": "Strands UI Node.js App",
-  "author": "Han Lee <hanclee@yahoo.com>",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
-  },
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "express": "^4.15.4"
+    "classnames": "^2.2.5",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-scripts": "1.0.11"
+  },
+  "scripts": {
+    "start": "PORT=8080 node_modules/.bin/react-scripts start",
+    "build": "node_modules/.bin/react-scripts build",
+    "test": "node_modules/.bin/react-scripts test --env=jsdom",
+    "eject": "node_modules/.bin/react-scripts eject"
   }
 }
