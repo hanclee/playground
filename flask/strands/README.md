@@ -4,15 +4,9 @@ These instructions were made for Ubuntu 17.04.
 # RUN
 - cd flask/strands
 - docker-compose up
-- (browser-ui) http://localhost:8080
+- (browser-ui-client) http://localhost:8080
+- (browser-ui-app) http://localhost:8050
 - (browser-api) http://localhost:5000
-
-# SHELL
-- docker-compose run --rm api /bin/bash (api host)
-- docker-compose run --rm web /bin/bash (web host)
-
-# TEST
-- TODO: docker-compose -p tests run -p 3000 --rm web npm run watch-tests
 
 # INSTALLATION
 - (assumes app base dir is "flask/", replace with your git checkout dir)
@@ -29,14 +23,20 @@ These instructions were made for Ubuntu 17.04.
 - docker-compose build
 - docker-compose build --no-cache (force a clean build)
 
-# NODE SETUP
+# SHELL
+- docker-compose run --rm api /bin/bash (api host)
+- docker-compose run --rm web /bin/bash (web host)
+- docker-compose run --rm client /bin/bash (dev client host)
+
+# TEST
+- TODO: docker-compose -p tests run -p 3000 --rm web npm run watch-tests
+
+# CLIENT APP ASSEMBLY (reference only)
 - sudo npm install -g create-react-app
 - cd flask/strands
-- create-react-app strands-ui-app
-- cd strands-ui-app
+- create-react-app strands-ui-client
+- cd strands-ui-client
 - npm install --save classnames
-- npm install --save react-bootstrap
-- npm install --save bootstrap
 - npm start
 
 # TODO
@@ -47,6 +47,7 @@ These instructions were made for Ubuntu 17.04.
 4. set up login page
 5. implement cancel search
 6. implement search history
+7. set up express hot reloading
 
 ### DONE
 - set up docker dev env
@@ -57,7 +58,8 @@ These instructions were made for Ubuntu 17.04.
 - set up express app server
 - set up react
 - set up app main page
-- set up node.js hot reloading
+- set up react hot reloading
+- set up dev client app instance (for hot reloading)
 
 # QUESTIONS
 - does app need user/passwords for login or will anonymous sessions be ok? (Lame if the cookies are cleared but meets MVP spec)
@@ -73,3 +75,4 @@ These instructions were made for Ubuntu 17.04.
 - https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md
 - https://medium.com/@patriciolpezjuri/using-create-react-app-with-react-router-express-js-8fa658bf892d
 - https://github.com/facebookincubator/create-react-app/issues/301
+- https://daveceddia.com/create-react-app-express-production/

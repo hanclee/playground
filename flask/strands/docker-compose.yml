@@ -19,12 +19,25 @@ services:
       - db
   web:
     build: strands-ui-app
+    environment:
+      - DEBUG=strands-ui-app:*
     command: npm start
     volumes:
       - ./strands-ui-app:/strands-ui-app
-      - /strands-ui-app/node_modules
     ports:
-      - "8080:8080"
+      - "8050:8050"
     depends_on:
       - db
       - api
+  client:
+    build: strands-ui-client
+    command: npm start
+    volumes:
+      - ./strands-ui-client:/strands-ui-client
+      - /strands-ui-client/node_modules
+    ports:
+      - "8080:8080"
+    links:
+      - web
+    depends_on:
+      - web

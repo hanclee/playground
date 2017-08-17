@@ -11,7 +11,7 @@ def hello_bio():
     handle.close()
     return render_template('hello_world.html', ids=record["IdList"])
 
-@app.route('/dna_search')
+@app.route('/dna-search')
 def dna_search():
     dna = request.args.get('q')
 
