@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const http = require('http');
 
 const app = express();
 
@@ -8,11 +9,9 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 // Put all API endpoints under '/api'
 app.get('/api/search', (req, res) => {
-  // Return them as json
-  results = ["1","2","3"];
-  res.json(results);
-
-  console.log(`Sent ${results.length} results`);
+  http.request('http://api:5000/dna-search?q='+encodeURIComponent(req.query.q), function(response) {
+    response.pipe(res);
+  }).end();
 });
 
 const port = process.env.PORT || 8050;

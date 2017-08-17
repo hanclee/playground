@@ -11,7 +11,10 @@ class App extends Component {
     let search = ReactDOM.findDOMNode(this.refs.query).value;
     fetch('/api/search?q='+encodeURIComponent(search))
       .then(res => res.json())
-      .then(results => this.setState({ results }));
+      .then(response => {
+        const results = response["ids"];
+        this.setState({ results });
+      });
   }
 
   render() {

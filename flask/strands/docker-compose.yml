@@ -26,6 +26,8 @@ services:
       - ./strands-ui-app:/strands-ui-app
     ports:
       - "8050:8050"
+    links:
+      - api
     depends_on:
       - db
       - api
