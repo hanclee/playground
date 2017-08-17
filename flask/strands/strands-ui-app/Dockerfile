@@ -11,4 +11,4 @@ WORKDIR /strands-ui-app
 
 ADD . /strands-ui-app
 
-RUN cd /strands-ui-app && npm install
+RUN npm install
