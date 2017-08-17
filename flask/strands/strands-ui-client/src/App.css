@@ -29,6 +29,9 @@
 .form-inline .sr-only, .form-inline .form-control {
   margin-right: 10px;
 }
+.form-inline #query{
+  text-transform: uppercase;
+}
 .results {
   list-style: none;
   padding: 0;

@@ -12,7 +12,7 @@ class App extends Component {
     fetch('/api/search?q='+encodeURIComponent(search))
       .then(res => res.json())
       .then(response => {
-        const results = response["ids"];
+        const results = response["features"];
         this.setState({ results });
       });
   }
@@ -29,10 +29,10 @@ class App extends Component {
         <div className="App-intro">
           <form id="dna-search" className="form-inline">
             <label htmlFor="query" className="sr-only">Enter a DNA search:</label>
-            <input type="text" id="query" ref="query" className="form-control" placeholder="Cypripedioideae" />
+            <input type="text" id="query" ref="query" className="form-control" placeholder="sequence (ie: CTCGG)" />
             <button type="submit" className="btn btn-primary" onClick={this.dnaSearch}>Search</button>
           </form>
-          {results.length ? (
+          {results && results.length ? (
             <div>
               <h3>{results.length} results.</h3>
               <ul className="results">
