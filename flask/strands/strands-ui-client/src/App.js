@@ -29,7 +29,7 @@ class App extends Component {
         <div className="App-intro">
           <form id="dna-search" className="form-inline">
             <label htmlFor="query" className="sr-only">Enter a DNA search:</label>
-            <input type="text" id="query" ref="query" className="form-control" placeholder="sequence (ie: CTCGG)" />
+            <input type="text" id="query" ref="query" className="form-control" placeholder="sequence (ie: CTCGGATA)" />
             <button type="submit" className="btn btn-primary" onClick={this.dnaSearch}>Search</button>
           </form>
           {results && results.length ? (
