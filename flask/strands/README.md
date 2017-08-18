@@ -41,13 +41,11 @@ These instructions were made for Ubuntu 17.04.
 
 # TODO
 ### PENDING
-1. set up interruptable search
-2. set up postgres and link to express
-3. set up user model
-4. set up login page
-5. implement cancel search
-6. implement search history
-7. set up express hot reloading
+1. set up postgres and link to express
+2. set up user model
+3. set up login page
+4. implement search history
+5. set up express hot reloading
 
 ### DONE
 - set up docker dev env
