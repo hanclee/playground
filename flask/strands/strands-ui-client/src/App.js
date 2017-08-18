@@ -8,15 +8,12 @@ class App extends Component {
 
   dnaSearch = (event) => {
     event.preventDefault();
-    console.log("start search");
     let search = ReactDOM.findDOMNode(this.refs.query).value;
     fetch('/api/search?q='+encodeURIComponent(search))
       .then(res => res.json())
       .then(response => {
         const results = response["features"];
-        console.log("start results");
         this.setState({ results });
-        console.log("end results");
       });
   }
 
