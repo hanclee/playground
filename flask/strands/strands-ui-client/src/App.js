@@ -4,7 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-  state = { results: [] }
+  state = { features: [], warning: null }
 
   dnaSearch = (event) => {
     event.preventDefault();
@@ -12,13 +12,15 @@ class App extends Component {
     fetch('/api/search?q='+encodeURIComponent(search))
       .then(res => res.json())
       .then(response => {
-        const results = response["features"];
-        this.setState({ results });
+        const features = response["features"];
+        const warning = response["warning"];
+        this.setState({ features: features, warning: warning });
       });
   }
 
   render() {
-    const { results } = this.state;
+    let features = this.state.features;
+    let warning = this.state.warning || "";
 
     return (
       <div className="App">
@@ -32,9 +34,9 @@ class App extends Component {
             <input type="text" id="query" ref="query" className="form-control" placeholder="CTCGGATA" />
             <button type="submit" className="btn btn-primary" onClick={this.dnaSearch}>Search</button>
           </form>
-          {results && results.length ? (
+          {features && features.length ? (
             <div>
-              <h3>{results.length} results.</h3>
+              <h3>{features.length} results. {warning}</h3>
               <table className="results">
                 <thead>
                   <tr>
@@ -44,7 +46,7 @@ class App extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                {results.map((result, index) =>
+                {features.map((result, index) =>
                   <tr key={index}>
                     <td>{result["protein_id"]}</td>
                     <td>{result["start"]}</td>

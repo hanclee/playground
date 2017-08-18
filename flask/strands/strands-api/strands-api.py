@@ -27,6 +27,7 @@ def dna_search():
     dna = request.args.get('q')
 
     results = []
+    warning = ""
     if dna:
         for protein_record in protein_records:
             result = protein_record.seq.find(dna)
@@ -34,4 +35,6 @@ def dna_search():
                 result_end = result + len(dna)
                 results.append({"protein_id":protein_record.id, "start":result, "end":result_end})
                 result = protein_record.seq.find(dna, result_end)
-    return jsonify(features=results)
+    if len(results) == SEARCH_RESULTS_LIMIT:
+        warning = "Search limit exceeded, returning the first {} results.".format(SEARCH_RESULTS_LIMIT)
+    return jsonify({"features": results, "warning": warning})
