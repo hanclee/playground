@@ -8,6 +8,7 @@ class App extends Component {
 
   dnaSearch = (event) => {
     event.preventDefault();
+    console.log("start search");
     let search = ReactDOM.findDOMNode(this.refs.query).value;
     fetch('/api/search?q='+encodeURIComponent(search))
       .then(res => res.json())
@@ -38,11 +39,14 @@ class App extends Component {
             <div>
               <h3>{results.length} results.</h3>
               <table className="results">
-                <tr>
-                  <th>protein id</th>
-                  <th>sequence start</th>
-                  <th>sequence end</th>
-                </tr>
+                <thead>
+                  <tr>
+                    <th>protein id</th>
+                    <th>sequence start</th>
+                    <th>sequence end</th>
+                  </tr>
+                </thead>
+                <tbody>
                 {results.map((result, index) =>
                   <tr key={index}>
                     <td>{result["protein_id"]}</td>
@@ -50,6 +54,7 @@ class App extends Component {
                     <td>{result["end"]}</td>
                   </tr>
                 )}
+                </tbody>
               </table>
             </div>
           ) : (
