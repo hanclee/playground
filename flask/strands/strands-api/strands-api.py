@@ -30,6 +30,6 @@ def dna_search():
             result = protein_record.seq.find(dna)
             while result > 0:
                 result_end = result + len(dna)
-                results.append("{} [{}:{}]".format(protein_record.id, result, result_end))
+                results.append({"protein_id":protein_record.id, "start":result, "end":result_end})
                 result = protein_record.seq.find(dna, result_end)
     return jsonify(features=results)

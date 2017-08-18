@@ -41,7 +41,7 @@ These instructions were made for Ubuntu 17.04.
 
 # TODO
 ### PENDING
-1. set up search screen and do a call to the api server
+1. set up interruptable search
 2. set up postgres and link to express
 3. set up user model
 4. set up login page
@@ -60,6 +60,9 @@ These instructions were made for Ubuntu 17.04.
 - set up app main page
 - set up react hot reloading
 - set up dev client app instance (for hot reloading)
+- load protein database
+- implement biopython sequence search
+- set up search screen and do a call to the api server
 
 # QUESTIONS
 - does app need user/passwords for login or will anonymous sessions be ok? (Lame if the cookies are cleared but meets MVP spec)
