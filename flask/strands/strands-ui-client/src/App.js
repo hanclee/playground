@@ -1,25 +1,47 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import {parse} from 'query-string';
 import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-  state = { features: [], warning: null }
+  constructor(props) {
+    super(props);
 
-  dnaSearch = (event) => {
+    let query = null;
+    let params = parse(window.location.search);
+    if(params && params.q) {
+      query = params.q;
+      this.dnaSearch(query);
+    }
+
+    this.state = { query: query, features: [], history: null, warning: null }
+  }
+
+  queryChangeHandler = (event) => {
+    this.setState({ query: event.target.value });
+  }
+
+  dnaSearchHandler = (event) => {
     event.preventDefault();
-    let search = ReactDOM.findDOMNode(this.refs.query).value;
+    let search = ReactDOM.findDOMNode(this.refs.query).value.toUpperCase();
+    this.dnaSearch(search);
+  }
+
+  dnaSearch = (search) => {
     fetch('/api/search?q='+encodeURIComponent(search))
       .then(res => res.json())
       .then(response => {
         const features = response["features"];
+        const history = response["history"];
         const warning = response["warning"];
-        this.setState({ features: features, warning: warning });
+        this.setState({ features: features, history: history, warning: warning });
       });
   }
 
   render() {
     let features = this.state.features;
+    let history = this.state.history;
     let warning = this.state.warning || "";
 
     return (
@@ -31,9 +53,19 @@ class App extends Component {
         <div className="App-intro">
           <form id="dna-search" className="form-inline">
             <label htmlFor="query" className="sr-only">Enter a DNA search:</label>
-            <input type="text" id="query" ref="query" className="form-control" placeholder="CTCGGATA" />
-            <button type="submit" className="btn btn-primary" onClick={this.dnaSearch}>Search</button>
+            <input type="text" id="query" ref="query" className="form-control" value={this.state.query} placeholder="CTCGGATA" onChange={this.queryChangeHandler}/>
+            <button type="submit" className="btn btn-primary" onClick={this.dnaSearchHandler}>Search</button>
           </form>
+          {history && history.length > 0 &&
+            <div>
+              <h3>Prior searches:</h3>
+              <ul>
+                {history.map((result, index) =>
+                  <a key={index} href={"/dns-search?q="+result}>{result}</a>
+                )}
+              </ul>
+            </div>
+          }
           {features && features.length ? (
             <div>
               <h3>{features.length} results. {warning}</h3>
@@ -58,7 +90,7 @@ class App extends Component {
             </div>
           ) : (
             <div>
-              <h3>No results.</h3>
+              <h3>No results. {warning}</h3>
             </div>
           )}
         </div>

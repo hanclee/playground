@@ -22,6 +22,7 @@ These instructions were made for Ubuntu 17.04.
 - cd flask/strands
 - docker-compose build
 - docker-compose build --no-cache (force a clean build)
+- docker-compose up --force-recreate (force a container recreate)
 
 # SHELL
 - docker-compose run --rm api /bin/bash (api host)
@@ -76,4 +77,3 @@ These instructions were made for Ubuntu 17.04.
 - https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md
 - https://medium.com/@patriciolpezjuri/using-create-react-app-with-react-router-express-js-8fa658bf892d
 - https://github.com/facebookincubator/create-react-app/issues/301
-- https://daveceddia.com/create-react-app-express-production/
