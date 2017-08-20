@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import {parse} from 'query-string';
 import logo from './logo.svg';
 import './App.css';
@@ -8,12 +7,12 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    let query = null;
+    let query = "";
     let params = parse(window.location.search);
     if(params && params.q) {
       query = params.q;
-      this.dnaSearch(query);
     }
+    this.dnaSearch(query);
 
     this.state = { query: query, features: [], history: null, warning: null }
   }
@@ -24,7 +23,7 @@ class App extends Component {
 
   dnaSearchHandler = (event) => {
     event.preventDefault();
-    let search = ReactDOM.findDOMNode(this.refs.query).value.toUpperCase();
+    let search = this.state.query.toUpperCase();
     this.dnaSearch(search);
   }
 

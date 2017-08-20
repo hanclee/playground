@@ -28,25 +28,30 @@ app.get('/api/search', (req, res) => {
   if (!req.session.history) {
     req.session.history = []
   }
-  req.session.history.unshift(req.query.q);
-  req.session.history = _.uniq(req.session.history);
-  http.request('http://api:5000/dna-search?q='+encodeURIComponent(req.query.q), function(response) {
-    var body = '';
-    response.on('data', function(data) {
-      body += data;
-    });
-    response.on('end', function() {
-      if(!body) {
-        dataJson = {warning: 'No data retrieved from strands-api.'};
-      } else {
-        dataJson = JSON.parse(body);
-        dataJson["history"] = req.session.history;
-      }
-      res.send(dataJson);
-    });
-  }).on('error', function(e) {
-    res.send({warning: 'Problem with request: ' + e.message});
-  }).end();
+  if (req.query.q) {
+    req.session.history.unshift(req.query.q);
+    req.session.history = _.uniq(req.session.history);
+
+    http.request('http://api:5000/dna-search?q='+encodeURIComponent(req.query.q), function(response) {
+      var body = '';
+      response.on('data', function(data) {
+        body += data;
+      });
+      response.on('end', function() {
+        if(!body) {
+          dataJson = {warning: 'No data retrieved from strands-api.', history: req.session.history};
+        } else {
+          dataJson = JSON.parse(body);
+          dataJson["history"] = req.session.history;
+        }
+        res.send(dataJson);
+      });
+    }).on('error', function(e) {
+      res.send({warning: 'Problem with request: ' + e.message, history: req.session.history});
+    }).end();
+  } else {
+    res.send({history: req.session.history});
+  }
 });
 
 const port = process.env.PORT || 8050;

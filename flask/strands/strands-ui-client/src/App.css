@@ -34,6 +34,7 @@
 }
 .history {
   list-style-type: none;
+  padding: 0;
   font-size: small;
 }
 .results { 
