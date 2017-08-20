@@ -32,6 +32,10 @@
 .form-inline #query{
   text-transform: uppercase;
 }
+.history {
+  list-style-type: none;
+  font-size: small;
+}
 .results { 
   font-size: small;
   border: none;

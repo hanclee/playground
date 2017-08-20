@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const http = require('http');
+const _ = require('lodash');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
@@ -12,8 +13,11 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     store: new MongoStore({
-        url: 'mongodb://db'
-    })
+        url: 'mongodb://db/strands'
+    }),
+    cookie: {
+      httpOnly: false
+    }
 }));
 
 // serve static files from the React app
@@ -24,15 +28,18 @@ app.get('/api/search', (req, res) => {
   if (!req.session.history) {
     req.session.history = []
   }
-  req.session.history.push(req.query.q);
-console.log("req.session.history="+req.session.history);
+  req.session.history.unshift(req.query.q);
+  req.session.history = _.uniq(req.session.history);
   http.request('http://api:5000/dna-search?q='+encodeURIComponent(req.query.q), function(response) {
+    var body = '';
     response.on('data', function(data) {
-console.log("data="+data);
-      if(!data) {
+      body += data;
+    });
+    response.on('end', function() {
+      if(!body) {
         dataJson = {warning: 'No data retrieved from strands-api.'};
       } else {
-        dataJson = JSON.parse(data);
+        dataJson = JSON.parse(body);
         dataJson["history"] = req.session.history;
       }
       res.send(dataJson);

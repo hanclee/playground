@@ -25,6 +25,7 @@ services:
     build: strands-ui-app
     environment:
       - DEBUG=strands-ui-app:*
+      - NODE_ENV=development
     command: npm start
     volumes:
       - ./strands-ui-app:/strands-ui-app

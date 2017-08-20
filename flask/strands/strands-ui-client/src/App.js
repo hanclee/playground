@@ -29,8 +29,9 @@ class App extends Component {
   }
 
   dnaSearch = (search) => {
-    fetch('/api/search?q='+encodeURIComponent(search))
-      .then(res => res.json())
+    fetch('/api/search?q='+encodeURIComponent(search), {
+      credentials: "same-origin"
+      }).then(res => res.json())
       .then(response => {
         const features = response["features"];
         const history = response["history"];
@@ -59,9 +60,11 @@ class App extends Component {
           {history && history.length > 0 &&
             <div>
               <h3>Prior searches:</h3>
-              <ul>
+              <ul className="history">
                 {history.map((result, index) =>
-                  <a key={index} href={"/dns-search?q="+result}>{result}</a>
+                  <li key={index}>
+                    <a href={"/dns-search?q="+result}>{result}</a>
+                  </li>
                 )}
               </ul>
             </div>

@@ -42,11 +42,9 @@ These instructions were made for Ubuntu 17.04.
 
 # TODO
 ### PENDING
-1. set up postgres and link to express
-2. set up user model
-3. set up login page
-4. implement search history
-5. set up express hot reloading
+1. set up user model
+2. set up login page
+3. set up express hot reloading
 
 ### DONE
 - set up docker dev env
@@ -62,6 +60,8 @@ These instructions were made for Ubuntu 17.04.
 - load protein database
 - implement biopython sequence search
 - set up search screen and do a call to the api server
+- implement search history
+- set up mongo and link to express sessions
 
 # QUESTIONS
 - does app need user/passwords for login or will anonymous sessions be ok? (Lame if the cookies are cleared but meets MVP spec)
