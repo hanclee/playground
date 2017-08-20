@@ -28,9 +28,9 @@ browser-ui-client is a docker instance with the react client UI. It is in a sepa
 - docker-compose up --force-recreate (force a container recreate)
 
 # SHELL
-- docker-compose run --rm api /bin/bash (api host)
-- docker-compose run --rm web /bin/bash (web host)
-- docker-compose run --rm client /bin/bash (dev client host)
+- docker-compose run --rm api /bin/bash (browser-api host)
+- docker-compose run --rm web /bin/bash (browser-ui-app host)
+- docker-compose run --rm client /bin/bash (browser-ui-client host)
 
 # TEST
 - TODO: docker-compose -p tests run -p 3000 --rm web npm run watch-tests
@@ -59,7 +59,7 @@ browser-ui-client is a docker instance with the react client UI. It is in a sepa
 - set up react
 - set up app main page
 - set up react hot reloading
-- set up dev client app instance (for hot reloading)
+- set up browser-ui-client app instance (for hot reloading)
 - load protein database
 - implement biopython sequence search
 - set up search screen and do a call to the api server
