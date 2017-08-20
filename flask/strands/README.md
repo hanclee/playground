@@ -32,9 +32,6 @@ browser-ui-client is a docker instance with the react client UI. It is in a sepa
 - docker-compose run --rm web /bin/bash (browser-ui-app host)
 - docker-compose run --rm client /bin/bash (browser-ui-client host)
 
-# TEST
-- TODO: docker-compose -p tests run -p 3000 --rm web npm run watch-tests
-
 # CLIENT APP ASSEMBLY (reference only)
 - sudo npm install -g create-react-app
 - cd flask/strands
