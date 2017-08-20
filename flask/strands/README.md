@@ -1,6 +1,9 @@
 # ENVIRONMENT
 These instructions were made for Ubuntu 17.04.
 
+# ARCHITECTURE
+browser-ui-client is a docker instance with the react client UI. It is in a separate docker image for hot-deployment in dev. browser-ui-app is the app server used by the react client. browser-api is a python API server used to serve Biopython data. MongoDB is used to store session data which contains the persistent search history.
+
 # RUN
 - cd flask/strands
 - docker-compose up
