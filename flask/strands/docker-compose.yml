@@ -29,6 +29,7 @@ services:
     command: npm start
     volumes:
       - ./strands-ui-app:/strands-ui-app
+      - /strands-ui-app/node_modules
     ports:
       - "8050:8050"
     links:
