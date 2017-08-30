@@ -16,7 +16,8 @@ app.use(session({
         url: 'mongodb://db/strands'
     }),
     cookie: {
-      httpOnly: false
+      httpOnly: false,
+      maxAge: 31536000000
     }
 }));
 
